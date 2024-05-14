@@ -7,6 +7,19 @@ const cron = require("node-cron");
 const fs = require("fs");
 const nodemailer = require("nodemailer");
 const path = require("path");
+const express = require("express");
+
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
+
+// Start the Express server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
 
 // Function to execute the task
 const task = () => {
