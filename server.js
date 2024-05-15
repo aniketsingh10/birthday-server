@@ -35,9 +35,31 @@ const task = () => {
   };
 
   const indianTime = currentDate.toLocaleTimeString("en-IN", options);
-  console.log(indianTime);
-  // Check if the current time is 12:00:00 AM
-  if (indianTime === "12:00:00 am") {
+  const [time, period] = indianTime.split(" ");
+  const [hour, minute, second] = time.split(":");
+
+  const hour24 =
+    period === "PM" && hour !== "12"
+      ? (parseInt(hour) + 12).toString().padStart(2, "0")
+      : period === "AM" && hour === "12"
+      ? "00"
+      : hour.padStart(2, "0");
+  const formattedTime24 = `${hour24}:${minute.padStart(
+    2,
+    "0"
+  )}:${second.padStart(2, "0")}`;
+
+  // console.log(`Hour: ${hour}`);
+  // console.log(`Minute: ${minute}`);
+  // console.log(`Second: ${second}`);
+  // console.log(`Period: ${period}`);
+  // console.log(`Formatted Time (24-hour): ${formattedTime24}`);
+
+  if (
+    formattedTime24 >= "12:00:00" &&
+    formattedTime24 <= "12:11:00" &&
+    period == "am"
+  ) {
     readAndExecute();
   }
 };

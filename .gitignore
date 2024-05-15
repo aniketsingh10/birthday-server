@@ -10,6 +10,8 @@
 
 # production
 /build
+encryption.js
+data.json
 
 # misc
 .DS_Store
