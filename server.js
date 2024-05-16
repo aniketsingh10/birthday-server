@@ -54,7 +54,7 @@ const task = () => {
   // console.log(`Second: ${second}`);
   // console.log(`Period: ${period}`);
   // console.log(`Formatted Time (24-hour): ${formattedTime24}`);
-
+  console.log(formattedTime24);
   if (
     formattedTime24 >= "12:00:00" &&
     formattedTime24 <= "12:11:00" &&
@@ -65,7 +65,7 @@ const task = () => {
 };
 
 // Schedule the task to run after every 10 minute
-const cronSchedule = "*/10 * * * *";
+const cronSchedule = "*/5 * * * *";
 cron.schedule(cronSchedule, task);
 
 // Function to read data from a file and execute a sendEmails
